@@ -2,9 +2,22 @@
 
 namespace AutomatedTellerMachine
 {
+    private class ConsoleOutput
+    {
+        public void GetCard1()
+        {
+            switch (langauge)
+            {
+                "1" =>  "\nPlease wait...\n";
+                "2" => "\nFrench...\n";
+                "3" => "\nGerman... \n";
+            }
+        }
+    }
     internal partial class MyATMInEng : IMyATM
     {
-        private bool _insertCard;
+    string langauge;
+    private bool _insertCard;
         private int _cardPin;
         private string _cardUser;
         private static double _acctBal;
@@ -13,7 +26,7 @@ namespace AutomatedTellerMachine
 
         public bool GetCard()
         {
-            Console.WriteLine("\nPlease wait...\n");
+        ConsoleOutput.GetCard1();
             Thread.Sleep(1000);
             Console.WriteLine("\nCard inserted\n");
             return true;
@@ -64,6 +77,8 @@ namespace AutomatedTellerMachine
 
         public MyATMInEng()
         {
+        Console.WriteLine("Choose preferred language")
+        langauge = Console.ReadLine();
             _insertCard = GetCard();
             _cardUser = GetCardUserName();
             _cardPin = GetPin();
